@@ -1,0 +1,4 @@
+cn.hengzq.orange.security.config.SecurityAuthenticationAutoConfiguration
+cn.hengzq.orange.security.config.SecurityAutoConfiguration
+cn.hengzq.orange.security.config.SecurityAutoConfigurationAdapter
+cn.hengzq.orange.security.config.SecurityWebAutoConfiguration

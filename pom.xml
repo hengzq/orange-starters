@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cn.hengzq.orange</groupId>
+        <artifactId>orange-dependencies-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>orange-starters</artifactId>
+    <name>${project.artifactId}</name>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+    <description>
+        orange-starters
+    </description>
+
+    <properties>
+        <revision>0.0.1-SNAPSHOT</revision>
+    </properties>
+
+    <modules>
+        <module>orange-starter-common</module>
+        <module>orange-starter-context</module>
+        <module>orange-starter-mybatis</module>
+        <module>orange-starter-springdoc-webmvc</module>
+        <module>orange-starter-webmvc</module>
+        <module>orange-starter-security</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>cn.hengzq.orange</groupId>
+                <artifactId>orange-starter-common</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hengzq.orange</groupId>
+                <artifactId>orange-starter-context</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hengzq.orange</groupId>
+                <artifactId>orange-starter-mybatis</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hengzq.orange</groupId>
+                <artifactId>orange-starter-springdoc-webflux</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hengzq.orange</groupId>
+                <artifactId>orange-starter-webflux</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hengzq.orange</groupId>
+                <artifactId>orange-starter-springdoc-webmvc</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hengzq.orange</groupId>
+                <artifactId>orange-starter-webmvc</artifactId>
+                <version>${revision}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

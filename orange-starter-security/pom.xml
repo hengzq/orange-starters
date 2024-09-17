@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.hengzq.orange</groupId>
+        <artifactId>orange-starters</artifactId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>orange-starter-security</artifactId>
+    <name>${project.artifactId}</name>
+    <packaging>jar</packaging>
+
+    <description>
+        orange-starter-security
+    </description>
+
+
+    <dependencies>
+        <!--  spring security 依赖      -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!--  hutool 扩展依赖      -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-extra</artifactId>
+        </dependency>
+
+        <!--   servlet 依赖     -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hengzq.orange</groupId>
+            <artifactId>orange-starter-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.hengzq.orange</groupId>
+            <artifactId>orange-starter-context</artifactId>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,2 @@
+cn.hengzq.orange.mybatis.config.MybatisPlusAutoConfiguration
+cn.hengzq.orange.mybatis.config.SqlSessionFactoryAutoConfiguration
