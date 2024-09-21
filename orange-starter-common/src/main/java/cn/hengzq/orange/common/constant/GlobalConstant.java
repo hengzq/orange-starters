@@ -29,5 +29,9 @@ public interface GlobalConstant {
 
     String UPDATED_AT = "updatedAt";
 
+    /**
+     * 超级管理员角色
+     */
+    String SUPER_ADMIN_ROLE = "super_admin";
 
 }

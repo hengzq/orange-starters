@@ -9,7 +9,7 @@ public interface SecurityConstant {
     /**
      * 新用户默认密码
      */
-    String DEFAULT_USER_PASSWORD = "orange-ai.cc";
+    String DEFAULT_USER_PASSWORD = "hengzq.cn";
 
 
     String AUTHORIZATION = "Authorization";
@@ -17,7 +17,7 @@ public interface SecurityConstant {
     /**
      * Token Key
      */
-    String TOKEN = "orange-ai-token";
+    String TOKEN = "orange-token";
 
     /**
      * token 过期时间
@@ -27,7 +27,7 @@ public interface SecurityConstant {
     /**
      * 发行人
      */
-    String ISSUER = "orange-ai";
+    String ISSUER = "hengzq";
 
 
     /**
@@ -53,6 +53,6 @@ public interface SecurityConstant {
     /**
      * 秘钥key
      */
-    String DEFAULT_SECRET_KEY = "OrangeAi2024.";
+    String DEFAULT_SECRET_KEY = "Orange2024.";
 
 }
