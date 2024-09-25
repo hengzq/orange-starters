@@ -42,6 +42,7 @@ public class JWTTokenAuthenticationFilter extends OncePerRequestFilter {
         String token = getToken(request);
         // 没有Token直接放行，交给Spring Security处理
         if (StrUtil.isBlank(token)) {
+            log.warn("token is null.");
             chain.doFilter(request, response);
             return;
         }
@@ -59,7 +60,9 @@ public class JWTTokenAuthenticationFilter extends OncePerRequestFilter {
         // 将信息存入上下文对象
         SecurityContextHolder.getContext().setAuthentication(authentication);
         // 设置全局上下文
-        GlobalContextHelper.setContext(userInfo);
+        GlobalContextHelper.getGlobalContext()
+                .withUserInfo(userInfo)
+                .withToken(token);
         chain.doFilter(request, response);
     }
 

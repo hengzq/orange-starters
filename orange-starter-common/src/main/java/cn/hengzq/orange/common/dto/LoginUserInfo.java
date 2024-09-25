@@ -32,6 +32,6 @@ public class LoginUserInfo implements Serializable {
     /**
      * 登陆账号
      */
-    private String username;
+    private String loginAccount;
 
 }

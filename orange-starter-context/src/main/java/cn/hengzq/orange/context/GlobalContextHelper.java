@@ -22,7 +22,7 @@ public class GlobalContextHelper {
     }
 
     public static void setContext(String traceId) {
-        getGlobalContext().withTraceId(StrUtil.isBlank(traceId) ? IdUtil.getSnowflakeNextIdStr() : traceId);
+        getGlobalContext().withRequestId(StrUtil.isBlank(traceId) ? IdUtil.getSnowflakeNextIdStr() : traceId);
     }
 
     public static void setContext(LoginUserInfo userInfo) {
@@ -43,11 +43,13 @@ public class GlobalContextHelper {
         return Objects.isNull(userInfo) ? null : userInfo.getUserId();
     }
 
-
-    public static String getTraceId() {
-        return getGlobalContext().getTraceId();
+    public static String getRequestId() {
+        return getGlobalContext().getRequestId();
     }
 
+    public static String getToken() {
+        return getGlobalContext().getToken();
+    }
 
     public static LoginUserInfo getUserInfo() {
         LoginUserInfo userInfo = getGlobalContext().getUserInfo();
@@ -57,5 +59,4 @@ public class GlobalContextHelper {
         }
         return userInfo;
     }
-
 }

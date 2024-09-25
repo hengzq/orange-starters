@@ -65,9 +65,9 @@ public class SecurityAutoConfigurationAdapter {
                         // api文档接口，可匿名访问
                         .requestMatchers(HttpMethod.GET, "/v3/api-docs/*").permitAll()
                         // 允许直接访问授权登录接口
-                        .requestMatchers(HttpMethod.POST, "/orange-system/v1.0/permission/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/orange-system/v1.0/auth/login").permitAll()
                         // 允许直接访问的授权相关接口
-                        .requestMatchers(HttpMethod.GET, "/orange-system/v1.0/permission/auth/password-encrypt").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/orange-system/v1.0/auth/password-encrypt").permitAll()
                         // 允许 SpringMVC 的默认错误地址匿名访问
                         .requestMatchers("/error").permitAll()
                         // 允许任意请求被已登录用户访问

@@ -67,6 +67,17 @@
             <artifactId>jakarta.validation-api</artifactId>
         </dependency>
         <!--    参数校验 end    -->
+
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
 </project>

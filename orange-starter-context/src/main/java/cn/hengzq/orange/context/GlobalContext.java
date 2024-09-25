@@ -21,7 +21,9 @@ public class GlobalContext {
     /**
      * 日志追踪ID
      */
-    private String traceId;
+    private String requestId;
+
+    private String token;
 
     /**
      * 当前上下文中的用户
@@ -40,16 +42,21 @@ public class GlobalContext {
         LOCAL.set(context);
     }
 
-    public GlobalContext withTraceId(String traceId) {
-        this.traceId = traceId;
-        if (StrUtil.isNotBlank(traceId)) {
-            Thread.currentThread().setName(traceId);
+    public GlobalContext withRequestId(String requestId) {
+        this.requestId = requestId;
+        if (StrUtil.isNotBlank(requestId)) {
+            Thread.currentThread().setName(requestId);
         }
         return this;
     }
 
     public GlobalContext withUserInfo(LoginUserInfo userInfo) {
         this.userInfo = userInfo;
+        return this;
+    }
+
+    public GlobalContext withToken(String token) {
+        this.token = token;
         return this;
     }
 }
