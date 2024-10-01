@@ -27,9 +27,8 @@ public class SecurityAutoConfiguration {
      * Spring Security 加密
      */
     @Bean
-    @ConditionalOnMissingBean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(18);
+        return new BCryptPasswordEncoder();
     }
 
 

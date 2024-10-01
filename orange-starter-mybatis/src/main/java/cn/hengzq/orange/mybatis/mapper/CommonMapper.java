@@ -14,6 +14,7 @@ import cn.hengzq.orange.common.dto.param.PageParam;
 import cn.hengzq.orange.mybatis.entity.AbstractEntity;
 import org.apache.ibatis.annotations.Param;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -26,13 +27,18 @@ public interface CommonMapper<T extends AbstractEntity> extends BaseMapper<T> {
 
     /**
      * 插入一条数据
-     *
-     * @param entity 实体对象
-     * @return 新增数据ID
      */
     default Long insertOne(T entity) {
         this.insert(entity);
         return Convert.toLong(entity.getId());
+    }
+
+    default Boolean deleteOneById(Serializable id) {
+        T entity = selectById(id);
+        if (Objects.isNull(entity)) {
+            return true;
+        }
+        return deleteById(id) > 0;
     }
 
     default Boolean updateOneById(T entity) {
