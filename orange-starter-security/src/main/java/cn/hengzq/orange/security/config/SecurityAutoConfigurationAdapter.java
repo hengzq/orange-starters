@@ -4,6 +4,7 @@ package cn.hengzq.orange.security.config;
 import cn.hengzq.orange.security.filter.JWTTokenAuthenticationFilter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -23,6 +24,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Slf4j
 @AutoConfiguration
 @EnableMethodSecurity
+@EnableConfigurationProperties(SecurityConfigProperties.class)
 public class SecurityAutoConfigurationAdapter {
 
     private final JWTTokenAuthenticationFilter jwtTokenAuthenticationFilter;
@@ -30,10 +32,14 @@ public class SecurityAutoConfigurationAdapter {
 
     private final AuthenticationEntryPoint authenticationEntryPoint;
 
+    private final SecurityConfigProperties securityConfigProperties;
+
     public SecurityAutoConfigurationAdapter(JWTTokenAuthenticationFilter jwtTokenAuthenticationFilter,
-                                            AuthenticationEntryPoint authenticationEntryPoint) {
+                                            AuthenticationEntryPoint authenticationEntryPoint,
+                                            SecurityConfigProperties securityConfigProperties) {
         this.jwtTokenAuthenticationFilter = jwtTokenAuthenticationFilter;
         this.authenticationEntryPoint = authenticationEntryPoint;
+        this.securityConfigProperties = securityConfigProperties;
         if (log.isDebugEnabled()) {
             log.debug("init {}.", this.getClass().getSimpleName());
         }
@@ -68,6 +74,8 @@ public class SecurityAutoConfigurationAdapter {
                         .requestMatchers(HttpMethod.POST, "/orange-system/v1.0/auth/login").permitAll()
                         // 允许直接访问的授权相关接口
                         .requestMatchers(HttpMethod.GET, "/orange-system/v1.0/auth/password-encrypt").permitAll()
+                        // 允许白名单 可以匿名访问
+                        .requestMatchers(securityConfigProperties.getWhiteListUrl().toArray(new String[0])).permitAll()
                         // 允许 SpringMVC 的默认错误地址匿名访问
                         .requestMatchers("/error").permitAll()
                         // 允许任意请求被已登录用户访问

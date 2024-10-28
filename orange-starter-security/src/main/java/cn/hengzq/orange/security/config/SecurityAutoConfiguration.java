@@ -3,7 +3,6 @@ package cn.hengzq.orange.security.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,7 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 /**
  * 只要依赖Starter 默认自动装配的Bean
  *
-  *
+ * @author hengzq
  */
 @Slf4j
 @AutoConfiguration
