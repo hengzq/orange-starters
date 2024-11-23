@@ -4,6 +4,8 @@ import lombok.Getter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
+import java.util.Map;
+
 public class ApplicationContextHelper implements ApplicationContextAware {
 
     @Getter
@@ -39,6 +41,13 @@ public class ApplicationContextHelper implements ApplicationContextAware {
      */
     public static <T> T getBean(String name, Class<T> clazz) {
         return getApplicationContext().getBean(name, clazz);
+    }
+
+    /**
+     * 通过class获取所有的Bean
+     */
+    public static <T> Map<String, T> getBeansOfType(Class<T> clazz) {
+        return getApplicationContext().getBeansOfType(clazz);
     }
 
 

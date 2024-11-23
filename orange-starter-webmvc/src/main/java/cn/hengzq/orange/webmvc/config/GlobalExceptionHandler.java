@@ -1,5 +1,6 @@
 package cn.hengzq.orange.webmvc.config;
 
+import cn.hengzq.orange.common.constant.GlobalErrorCodeConstant;
 import cn.hengzq.orange.common.exception.ServiceException;
 import cn.hengzq.orange.common.message.GlobalMessageSource;
 import cn.hengzq.orange.common.result.Result;
@@ -9,12 +10,15 @@ import cn.hutool.core.util.StrUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.context.MessageSourceResolvable;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.HandlerMethodValidationException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.List;
 
@@ -36,18 +40,46 @@ public class GlobalExceptionHandler {
         List<FieldError> fieldErrors = e.getFieldErrors();
         log.warn("the request parameter verification failed. fieldErrors:{}", fieldErrors);
         //给用户提供友好的错误提示
-        StringBuffer sb = new StringBuffer();
-        sb.append(String.format("[%s]个参数校验错误: ", fieldErrors.size()));
+        StringBuilder msg = new StringBuilder();
+        msg.append(String.format("[%s]个参数校验错误: ", fieldErrors.size()));
         for (FieldError error : fieldErrors) {
-            sb.append("[").append(error.getField()).append("]");
+            msg.append("[").append(error.getField()).append("]");
             if (StrUtil.isNotBlank(error.getDefaultMessage())) {
-                String msg = GlobalMessageSource.getAccessor().getMessage(error.getDefaultMessage(), "参数错误");
-                sb.append(msg);
+                String tempMsg = GlobalMessageSource.getAccessor().getMessage(error.getDefaultMessage(), "参数错误");
+                msg.append(tempMsg);
             }
-            sb.append(";");
+            msg.append(";");
         }
         Result<Object> result = ResultWrapper.fail();
-        result.setMsg(sb.toString());
+        result.setCode(GlobalErrorCodeConstant.GLOBAL_REQUEST_PARAMETER_CHECK_ERROR.getCode());
+        result.setMsg(msg.toString());
+        return result;
+    }
+
+    /**
+     * 自定义参数异常
+     */
+    @ExceptionHandler(HandlerMethodValidationException.class)
+    public Result<Object> handlerMethodValidationException(HandlerMethodValidationException e) {
+        //获取参数校验错误集合
+        List<? extends MessageSourceResolvable> fieldErrors = e.getAllErrors();
+        log.warn("the request parameter verification failed. fieldErrors:{}", fieldErrors);
+        //给用户提供友好的错误提示
+        StringBuilder msg = new StringBuilder();
+        msg.append(String.format("[%s]个参数校验错误: ", fieldErrors.size()));
+        for (MessageSourceResolvable error : fieldErrors) {
+            if (error instanceof FieldError fieldError) {
+                msg.append("[").append(fieldError.getField()).append("]");
+            }
+            if (StrUtil.isNotBlank(error.getDefaultMessage())) {
+                String tempMsg = GlobalMessageSource.getAccessor().getMessage(error.getDefaultMessage(), "参数错误");
+                msg.append(tempMsg);
+            }
+            msg.append(";");
+        }
+        Result<Object> result = ResultWrapper.fail();
+        result.setCode(GlobalErrorCodeConstant.GLOBAL_REQUEST_PARAMETER_CHECK_ERROR.getCode());
+        result.setMsg(msg.toString());
         return result;
     }
 
@@ -86,6 +118,16 @@ public class GlobalExceptionHandler {
 //        log.error("handleException msg:{} ", e.getMessage(), e);
 //        return ResultWrapper.fail(GlobalErrorCodeConstant.GLOBAL_FORBIDDEN);
 //    }
+
+
+    /**
+     * 资源未找到异常
+     */
+    @ExceptionHandler({NoResourceFoundException.class,})
+    public Result<?> handleNoResourceFoundException(NoResourceFoundException e) {
+        log.error("handleNoResourceFoundException msg:{}", e.getMessage());
+        return ResultWrapper.fail(WebmvcErrorCode.GLOBAL_NOT_FOUND);
+    }
 
     /**
      * 最大的异常捕获

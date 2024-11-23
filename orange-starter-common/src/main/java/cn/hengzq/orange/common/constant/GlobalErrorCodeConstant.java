@@ -5,7 +5,8 @@ import cn.hengzq.orange.common.exception.ErrorCode;
 
 /**
  * 全局错误码
- * HTTP 响应状态码 https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status
+ * HTTP 响应状态码
+ * <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status">...</a>
  *
  * @author hengzq
  */
@@ -16,13 +17,14 @@ public interface GlobalErrorCodeConstant {
     ErrorCode SUCCESS = new ErrorCode("200", "success");
 
     // 客户端异常码
-
-    ErrorCode GLOBAL_BAD_REQUEST = new ErrorCode(generateCode(400), "请求异常,稍后重试");
+    String GLOBAL_BAD_REQUEST_CODE = PREFIX + 400;
+    ErrorCode GLOBAL_BAD_REQUEST = new ErrorCode(GLOBAL_BAD_REQUEST_CODE, "请求异常,稍后重试");
 
     String GLOBAL_UNAUTHORIZED_CODE = PREFIX + 401;
     ErrorCode GLOBAL_UNAUTHORIZED = new ErrorCode(GLOBAL_UNAUTHORIZED_CODE, "请登录账号后再试");
 
-    ErrorCode GLOBAL_FORBIDDEN = new ErrorCode(generateCode(403), "您没有操作该资源的权限");
+    String GLOBAL_FORBIDDEN_CODE = PREFIX + 403;
+    ErrorCode GLOBAL_FORBIDDEN = new ErrorCode(GLOBAL_FORBIDDEN_CODE, "您没有操作该资源的权限");
     ErrorCode GLOBAL_NOT_FOUND = new ErrorCode(generateCode(404), "资源未找到,请联系管理人员");
     ErrorCode GLOBAL_METHOD_NOT_ALLOWED = new ErrorCode(generateCode(405), "请求方法异常,请联系管理人员");
     ErrorCode GLOBAL_LOCKED = new ErrorCode(generateCode(423), "正在访问的资源已锁定，请稍后重试");
@@ -55,6 +57,8 @@ public interface GlobalErrorCodeConstant {
     ErrorCode GLOBAL_DATA_PRESET_CANNOT_MODIFY = new ErrorCode(generateCode(3001), "预置数据不允许修改");
     ErrorCode GLOBAL_DATA_PRESET_CANNOT_DELETE = new ErrorCode(generateCode(3002), "预置数据不允许删除");
 
+    String GLOBAL_FILE_NOT_EXIST_CODE = PREFIX + 3100;
+    ErrorCode GLOBAL_FILE_NOT_EXIST = new ErrorCode(GLOBAL_FILE_NOT_EXIST_CODE, "文件不存在");
 
     ErrorCode GLOBAL_AUTH_ACCOUNT_ERROR = new ErrorCode(PREFIX + "400", "登陆账号错误");
     ErrorCode GLOBAL_AUTH_PASSWORD_ERROR = new ErrorCode(PREFIX + "400", "密码错误");

@@ -88,6 +88,10 @@ public class JWTTokenAuthenticationFilter extends OncePerRequestFilter {
         if (StrUtil.isNotBlank(authorization) && authorization.startsWith("Bearer ")) {
             return authorization.substring(7); // 提取JWT
         }
+        String token = request.getParameter(SecurityConstant.TOKEN);
+        if (StrUtil.isNotBlank(token)) {
+            return token;
+        }
         return null;
     }
 }
