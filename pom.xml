@@ -29,6 +29,7 @@
         <module>orange-starter-springdoc-webmvc</module>
         <module>orange-starter-webmvc</module>
         <module>orange-starter-security</module>
+        <module>orange-starter-storage</module>
     </modules>
 
     <dependencyManagement>

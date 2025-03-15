@@ -1,0 +1,2 @@
+cn.hengzq.orange.storage.local.config.LocalStorageAutoConfiguration
+cn.hengzq.orange.storage.aliyun.config.AliyunStorageAutoConfiguration
