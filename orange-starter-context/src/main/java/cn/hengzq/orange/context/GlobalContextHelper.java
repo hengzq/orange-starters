@@ -33,12 +33,12 @@ public class GlobalContextHelper {
         getGlobalContext().withUserInfo(userInfo);
     }
 
-    public static Long getTenantId() {
+    public static String getTenantId() {
         LoginUserInfo userInfo = getUserInfo();
         return Objects.isNull(userInfo) ? null : userInfo.getTenantId();
     }
 
-    public static Long getUserId() {
+    public static String getUserId() {
         LoginUserInfo userInfo = getUserInfo();
         return Objects.isNull(userInfo) ? null : userInfo.getUserId();
     }

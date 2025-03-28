@@ -16,7 +16,7 @@ public class IDEntity extends AbstractEntity {
      * 主键
      */
     @TableField("id")
-    private Long id;
+    private String id;
 
 
 }

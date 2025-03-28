@@ -21,12 +21,12 @@ public class LoginUserInfo implements Serializable {
     /**
      * 租户id
      */
-    private Long tenantId;
+    private String tenantId;
 
     /**
      * 登陆用户ID
      */
-    private Long userId;
+    private String userId;
 
 
     /**

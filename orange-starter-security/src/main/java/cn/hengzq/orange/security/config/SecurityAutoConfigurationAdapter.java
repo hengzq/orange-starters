@@ -69,7 +69,7 @@ public class SecurityAutoConfigurationAdapter {
                         // 静态资源，可匿名访问
                         .requestMatchers(HttpMethod.GET, "/webjars/**", "*.html", "*.ico").permitAll()
                         // api文档接口，可匿名访问
-                        .requestMatchers(HttpMethod.GET, "/v3/api-docs/*").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/v3/api-docs", "/v3/api-docs/*").permitAll()
                         // 允许直接访问授权登录接口
                         .requestMatchers(HttpMethod.POST, "/orange-system/v1.0/auth/login").permitAll()
                         // 允许直接访问的授权相关接口

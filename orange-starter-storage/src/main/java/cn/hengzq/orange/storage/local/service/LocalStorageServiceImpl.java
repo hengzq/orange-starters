@@ -32,14 +32,15 @@ public class LocalStorageServiceImpl extends AbstractStorageService {
     }
 
     @Override
-    public UploadFileResult upload(byte[] content, String relativePath) {
+    public UploadFileResult upload(byte[] content, String fileName, String filePath) {
         try {
-            String absolutePath = FileUtil.normalize(properties.getBasePath() + File.separator + relativePath);
+            String absolutePath = FileUtil.normalize(properties.getBasePath() + File.separator + filePath);
             FileUtil.writeBytes(content, absolutePath);
             return UploadFileResult.builder()
-                    .size((long) content.length)
-                    .type(FileUtil.extName(relativePath))
-                    .fileName(FileUtil.normalize(relativePath))
+                    .fileName(fileName)
+                    .fileSize((long) content.length)
+                    .fileType(FileUtil.extName(filePath))
+                    .filePath(FileUtil.normalize(filePath))
                     .build();
         } catch (Exception e) {
             throw new ServiceException(GlobalErrorCodeConstant.GLOBAL_DATA_NOT_EXIST);

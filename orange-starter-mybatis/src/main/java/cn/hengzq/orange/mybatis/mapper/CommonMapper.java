@@ -28,9 +28,9 @@ public interface CommonMapper<T extends AbstractEntity> extends BaseMapper<T> {
     /**
      * 插入一条数据
      */
-    default Long insertOne(T entity) {
+    default String insertOne(T entity) {
         this.insert(entity);
-        return Convert.toLong(entity.getId());
+        return Convert.toStr(entity.getId());
     }
 
     default Boolean deleteOneById(Serializable id) {

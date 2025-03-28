@@ -10,7 +10,7 @@ public interface GlobalConstant {
     /**
      * 默认父级ID
      */
-    Long DEFAULT_PARENT_ID = -1L;
+    String DEFAULT_PARENT_ID = "-1";
 
     /**
      * ID主键

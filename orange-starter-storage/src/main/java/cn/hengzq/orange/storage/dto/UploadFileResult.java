@@ -18,9 +18,12 @@ public class UploadFileResult implements Serializable {
     @Schema(description = "文件名称")
     private String fileName;
 
+    @Schema(description = "文件存储路径")
+    private String filePath;
+
     @Schema(description = "文件类型")
-    private String type;
+    private String fileType;
 
     @Schema(description = "文件大小")
-    private Long size;
+    private Long fileSize;
 }

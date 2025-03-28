@@ -10,6 +10,7 @@ import cn.hengzq.orange.common.constant.TenantConstant;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.LongValue;
+import net.sf.jsqlparser.expression.StringValue;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -50,7 +51,7 @@ public class MybatisPlusAutoConfiguration {
                     log.debug("mybatis get tenant. tenantId: [{}]", GlobalContextHelper.getTenantId());
                 }
                 // @TODO 处理租户ID
-                return new LongValue(GlobalContextHelper.getTenantId() == null ? TenantConstant.DEFAULT_TENANT_ID : GlobalContextHelper.getTenantId());
+                return new StringValue(GlobalContextHelper.getTenantId() == null ? TenantConstant.DEFAULT_TENANT_ID : GlobalContextHelper.getTenantId());
             }
 
             @Override

@@ -37,15 +37,16 @@ public class AliyunStorageServiceImpl extends AbstractStorageService {
     }
 
     @Override
-    public UploadFileResult upload(byte[] content, String relativePath) {
+    public UploadFileResult upload(byte[] content, String fileName, String filePath) {
         OSS client = new OSSClientBuilder().build(properties.getEndPoint(), properties.getAccessKeyId(), properties.getAccessKeySecret());
         try {
-            relativePath = FileUtil.normalize(relativePath);
-            client.putObject(properties.getBucketName(), relativePath, new ByteArrayInputStream(content));
+            filePath = FileUtil.normalize(filePath);
+            client.putObject(properties.getBucketName(), filePath, new ByteArrayInputStream(content));
             return UploadFileResult.builder()
-                    .size((long) content.length)
-                    .type(FileUtil.extName(relativePath))
-                    .fileName(relativePath)
+                    .fileName(fileName)
+                    .fileSize((long) content.length)
+                    .fileType(FileUtil.extName(filePath))
+                    .filePath(filePath)
                     .build();
         } catch (Exception e) {
             throw new ServiceException(GlobalErrorCodeConstant.GLOBAL_DATA_NOT_EXIST);

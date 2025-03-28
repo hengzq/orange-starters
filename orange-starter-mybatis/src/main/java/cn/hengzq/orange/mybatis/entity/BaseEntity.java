@@ -21,7 +21,7 @@ public class BaseEntity extends IDEntity {
      * 创建者账号
      */
     @TableField("created_by")
-    private Long createdBy;
+    private String createdBy;
 
     /**
      * 创建时间
@@ -33,7 +33,7 @@ public class BaseEntity extends IDEntity {
      * 更新者账号
      */
     @TableField("updated_by")
-    private Long updatedBy;
+    private String updatedBy;
 
     /**
      * 更新时间
@@ -41,7 +41,7 @@ public class BaseEntity extends IDEntity {
     @TableField("updated_at")
     private LocalDateTime updatedAt;
 
-    public Long getCreatedBy() {
+    public String getCreatedBy() {
         return Objects.isNull(createdBy) ? GlobalContextHelper.getUserId() : createdBy;
     }
 
@@ -49,7 +49,7 @@ public class BaseEntity extends IDEntity {
         return Objects.isNull(createdAt) ? LocalDateTime.now() : createdAt;
     }
 
-    public Long getUpdatedBy() {
+    public String getUpdatedBy() {
         return Objects.isNull(updatedBy) ? GlobalContextHelper.getUserId() : updatedBy;
     }
 

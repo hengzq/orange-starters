@@ -19,10 +19,10 @@ public class BaseTenantEntity extends BaseEntity {
      * 租户id
      */
     @TableField("tenant_id")
-    private Long tenantId;
+    private String tenantId;
 
 
-    public Long getTenantId() {
+    public String getTenantId() {
         return Objects.isNull(tenantId) ? GlobalContextHelper.getTenantId() : tenantId;
     }
 

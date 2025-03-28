@@ -25,7 +25,7 @@ public interface StorageService {
     /**
      * 文件上传
      */
-    UploadFileResult upload(byte[] content, String relativePath);
+    UploadFileResult upload(byte[] content, String fileName);
 
     @Deprecated
     byte[] getObjectByRelativePath(String relativePath);
