@@ -17,6 +17,6 @@ public class IdsParam implements Serializable {
 
     @NotEmpty
     @Schema(description = "IDS", requiredMode = Schema.RequiredMode.REQUIRED)
-    private List<Serializable> ids;
+    private List<String> ids;
 
 }

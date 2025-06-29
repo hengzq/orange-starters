@@ -13,13 +13,13 @@ import java.time.LocalDateTime;
 public class BaseDTO implements Serializable {
 
     @Schema(description = "创建人ID")
-    private Long createdBy;
+    private String createdBy;
 
     @Schema(description = "创建时间")
     private LocalDateTime createdAt;
 
     @Schema(description = "更新人ID")
-    private Long updatedBy;
+    private String updatedBy;
 
     @Schema(description = "更新时间")
     private LocalDateTime updatedAt;

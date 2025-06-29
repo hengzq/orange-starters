@@ -12,6 +12,6 @@ import lombok.EqualsAndHashCode;
 public class BaseTenantDTO extends BaseDTO {
 
     @Schema(description = "租户id")
-    private Long tenantId;
+    private String tenantId;
 
 }

@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class BaseUserDTO implements Serializable {
 
     @Schema(description = "用户ID")
-    private Long id;
+    private String id;
 
     @Schema(description = "用户名称")
     private String name;
