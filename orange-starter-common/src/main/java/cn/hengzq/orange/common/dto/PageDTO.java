@@ -39,6 +39,10 @@ public class PageDTO<T> {
         this.records = records;
     }
 
+    public static <T> PageDTO<T> of(Integer pageNo, Integer pageSize) {
+        return new PageDTO<>(pageNo, pageSize, 0, Collections.emptyList());
+    }
+
     public static <T> PageDTO<T> of(Integer pageNo, Integer pageSize, Integer total, List<T> records) {
         return new PageDTO<>(pageNo, pageSize, total, records);
     }

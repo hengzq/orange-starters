@@ -8,6 +8,11 @@ package cn.hengzq.orange.common.constant;
 public interface VersionConstant {
 
     /**
+     * 快照版本
+     */
+    String SNAPSHOT = "snapshot";
+
+    /**
      * v1.0 版本
      */
     String V1_0 = "v1.0";
