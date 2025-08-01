@@ -37,6 +37,10 @@ public interface GlobalErrorCodeConstant {
     ErrorCode GLOBAL_REQUEST_PARAMETER_CHECK_ERROR = new ErrorCode(generateCode(1001), "请求参数校验失败,请检查参数");
     ErrorCode GLOBAL_REQUEST_FAILED = new ErrorCode(generateCode(1002), "请求失败,请稍后重试");
 
+    String GLOBAL_PREVIEW_CODE = PREFIX + 1003;
+    ErrorCode GLOBAL_PREVIEW = new ErrorCode(GLOBAL_PREVIEW_CODE, "演示系统，不允许操作删除。");
+
+
     // 参数相关错误提示 编码 [2000,3000)
     ErrorCode GLOBAL_PARAMETER_IS_INVALID = new ErrorCode(generateCode(2000), "无效参数，请检查");
 
@@ -62,6 +66,7 @@ public interface GlobalErrorCodeConstant {
 
     ErrorCode GLOBAL_AUTH_ACCOUNT_ERROR = new ErrorCode(PREFIX + "400", "登陆账号错误");
     ErrorCode GLOBAL_AUTH_PASSWORD_ERROR = new ErrorCode(PREFIX + "400", "密码错误");
+
 
 
     // ------------------------------- 基础业务相关错误提示 [5000,6000) -------------------------------
